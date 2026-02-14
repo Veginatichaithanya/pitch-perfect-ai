@@ -1,21 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
+import { useParallax } from "@/hooks/useParallax";
 
 export default function Hero() {
+  const scrollY = useParallax();
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4">
-      {/* Decorative orbs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-indigo/20 blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-cyan/10 blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-      <div className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-glow/10 blur-[100px] animate-float" />
+      {/* Parallax decorative orbs */}
+      <div
+        className="absolute top-1/4 left-[15%] w-72 h-72 rounded-full bg-blue/8 blur-[100px] animate-pulse-glow"
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }}
+      />
+      <div
+        className="absolute bottom-1/4 right-[15%] w-96 h-96 rounded-full bg-green/6 blur-[120px] animate-pulse-glow"
+        style={{ transform: `translateY(${scrollY * -0.1}px)`, animationDelay: "2s" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/2 w-48 h-48 rounded-full bg-yellow/6 blur-[80px] animate-float"
+        style={{ transform: `translate(-50%, calc(-50% + ${scrollY * 0.2}px))` }}
+      />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-8 text-sm text-muted-foreground animate-fade-in">
-          <span className="w-2 h-2 rounded-full gradient-bg" />
+      <div className="relative z-10 max-w-3xl mx-auto text-center">
+        <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 mb-8 text-sm text-muted-foreground border border-border animate-fade-in">
+          <span className="w-2 h-2 rounded-full bg-primary" />
           AI-Powered Pitch Refinement
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight mb-6 text-foreground tracking-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
           Turn Your Ideas into{" "}
           <span className="gradient-text">Winning Pitches</span>
         </h1>
@@ -25,10 +37,10 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" className="gradient-bg text-primary-foreground rounded-full px-8 glow-hover">
+          <Button size="lg" className="bg-primary text-primary-foreground rounded-full px-8 shadow-md hover:shadow-lg transition-shadow">
             Try Now <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
-          <Button size="lg" variant="outline" className="rounded-full px-8 border-border/50 hover:bg-secondary/50">
+          <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-secondary">
             <Play className="w-4 h-4 mr-1" /> View Demo
           </Button>
         </div>

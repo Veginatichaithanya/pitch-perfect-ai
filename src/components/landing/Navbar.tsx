@@ -23,56 +23,53 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full transition-all duration-500 ${
-        scrolled ? "px-4 py-2 max-w-2xl" : "px-6 py-3 max-w-3xl"
+        scrolled ? "px-4 py-2 max-w-2xl shadow-md" : "px-6 py-3 max-w-3xl"
       } w-[92%]`}
     >
       <div className="flex items-center justify-between">
         <button onClick={() => scrollTo("Home")} className="flex items-center gap-2 font-bold text-lg">
-          <Sparkles className="w-5 h-5 text-accent" />
+          <Sparkles className="w-5 h-5 text-primary" />
           <span className="gradient-text">PitchAI</span>
         </button>
 
-        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary/50"
+              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary"
             >
               {l}
             </button>
           ))}
           <Button
             size="sm"
-            className="ml-2 gradient-bg text-primary-foreground rounded-full hover:opacity-90 transition-opacity"
+            className="ml-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
             onClick={() => scrollTo("Home")}
           >
             Get Started
           </Button>
         </div>
 
-        {/* Mobile toggle */}
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden mt-3 flex flex-col gap-1 pb-2">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary/50"
+              className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary"
             >
               {l}
             </button>
           ))}
           <Button
             size="sm"
-            className="mt-1 gradient-bg text-primary-foreground rounded-full hover:opacity-90"
+            className="mt-1 bg-primary text-primary-foreground rounded-full hover:bg-primary/90"
             onClick={() => scrollTo("Home")}
           >
             Get Started
