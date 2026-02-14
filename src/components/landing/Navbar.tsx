@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center rounded-full bg-background/80 backdrop-blur-lg border border-border transition-all duration-300 ${
-        scrolled ? "px-2 py-1.5 shadow-sm" : "px-3 py-2"
+        scrolled ? "px-4 py-2 shadow-sm" : "px-5 py-2.5"
       } w-auto max-w-[95%]`}
     >
       <button onClick={() => scrollTo("Home")} className="flex items-center gap-1.5 font-bold text-base px-2 shrink-0">
