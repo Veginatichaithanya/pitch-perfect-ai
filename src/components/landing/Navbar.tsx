@@ -23,63 +23,65 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full bg-background/80 backdrop-blur-lg border border-border ${
-        scrolled ? "px-4 py-2 max-w-2xl shadow-sm" : "px-6 py-3 max-w-3xl"
-      } w-[92%] transition-all duration-300`}
-    >
-      <div className="flex items-center justify-between">
-        <button onClick={() => scrollTo("Home")} className="flex items-center gap-2 font-bold text-lg">
-          <Sparkles className="w-5 h-5 text-primary" />
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 w-[92%] max-w-4xl justify-center">
+      {/* Pill navbar */}
+      <nav
+        className={`flex items-center gap-1 rounded-full bg-background/80 backdrop-blur-lg border border-border transition-all duration-300 ${
+          scrolled ? "px-3 py-1.5 shadow-sm" : "px-5 py-2.5"
+        }`}
+      >
+        <button onClick={() => scrollTo("Home")} className="flex items-center gap-1.5 font-bold text-base mr-2 shrink-0">
+          <Sparkles className="w-4 h-4 text-primary" />
           <span className="gradient-text font-extrabold tracking-tight">PitchAI</span>
         </button>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-0.5">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary font-medium"
+              className="px-2.5 py-1.5 text-[13px] text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary font-medium whitespace-nowrap"
             >
               {l}
             </button>
           ))}
-          <div className="flex items-center gap-2 ml-3">
-            <Button
-              size="sm"
-              variant="ghost"
-              className="rounded-full text-muted-foreground hover:text-foreground font-medium"
-              onClick={() => navigate("/login")}
-            >
-              <LogIn className="w-4 h-4 mr-1.5" /> Log in
-            </Button>
-            <Button
-              size="sm"
-              className="bg-foreground text-background rounded-full hover:bg-foreground/90 font-medium px-5"
-              onClick={() => navigate("/login")}
-            >
-              Get Started
-            </Button>
-          </div>
         </div>
 
-        <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
+        <button
+          className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 text-[13px] text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary font-medium ml-1"
+          onClick={() => navigate("/login")}
+        >
+          <LogIn className="w-3.5 h-3.5" /> Log in
+        </button>
+
+        {/* Mobile toggle */}
+        <button className="md:hidden text-foreground ml-1" onClick={() => setOpen(!open)}>
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
-      </div>
+      </nav>
 
+      {/* Get Started - outside pill */}
+      <Button
+        size="sm"
+        className="hidden md:inline-flex bg-foreground text-background rounded-full hover:bg-foreground/90 font-medium px-5 h-9 text-[13px] shrink-0 transition-all duration-200 hover:shadow-md"
+        onClick={() => navigate("/login")}
+      >
+        Get Started
+      </Button>
+
+      {/* Mobile dropdown */}
       {open && (
-        <div className="md:hidden mt-3 flex flex-col gap-1 pb-3 border-t border-border/50 pt-3">
+        <div className="absolute top-full mt-2 left-0 right-0 bg-background/95 backdrop-blur-lg border border-border rounded-2xl shadow-lg p-3 md:hidden">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary font-medium"
+              className="w-full px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary font-medium"
             >
               {l}
             </button>
           ))}
-          <div className="flex flex-col gap-2 mt-2 px-1">
+          <div className="flex flex-col gap-2 mt-2 pt-2 border-t border-border">
             <Button
               size="sm"
               variant="outline"
@@ -98,6 +100,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 }
