@@ -1,5 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Upload, Brain, BarChart3, Pencil, LineChart } from "lucide-react";
+import { Upload, Brain, BarChart3, Pencil, LineChart, ChevronRight } from "lucide-react";
 
 const steps = [
   { icon: Upload, title: "Submit Pitch", desc: "Upload your pitch script or paste it directly.", color: "bg-blue/10 text-blue", ring: "ring-blue/20" },
@@ -25,25 +25,27 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="relative">
-          <div className="hidden lg:block absolute top-[3.25rem] left-[10%] right-[10%] h-px bg-border" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            {steps.map((step, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-9 gap-4 items-start">
+          {steps.map((step, i) => (
+            <div key={step.title} className="contents">
               <div
-                key={step.title}
-                className="fade-up flex flex-col items-center text-center group"
+                className="fade-up flex flex-col items-center text-center group lg:col-span-1"
                 style={{ transitionDelay: `${i * 0.12}s` }}
               >
-                <div className={`relative z-10 w-14 h-14 rounded-2xl ${step.color} ring-1 ${step.ring} flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:shadow-md`}>
+                <div className={`w-14 h-14 rounded-2xl ${step.color} ring-1 ${step.ring} flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}>
                   <step.icon className="w-6 h-6" />
                 </div>
                 <span className="text-[11px] font-bold text-primary/70 uppercase tracking-widest mb-1.5">Step {i + 1}</span>
                 <h3 className="font-bold mb-1 text-sm">{step.title}</h3>
                 <p className="text-muted-foreground text-xs leading-relaxed">{step.desc}</p>
               </div>
-            ))}
-          </div>
+              {i < steps.length - 1 && (
+                <div className="hidden lg:flex items-center justify-center lg:col-span-1 pt-5">
+                  <ChevronRight className="w-5 h-5 text-muted-foreground/40" />
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
