@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const links = ["Home", "About", "How It Works", "Features", "Contact"];
@@ -22,33 +22,43 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 glass rounded-full transition-all duration-500 ${
-        scrolled ? "px-4 py-2 max-w-2xl shadow-md" : "px-6 py-3 max-w-3xl"
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-full transition-all duration-500 bg-background/70 backdrop-blur-xl border border-border/60 ${
+        scrolled ? "px-4 py-2 max-w-2xl shadow-lg shadow-foreground/5" : "px-6 py-3 max-w-3xl shadow-md shadow-foreground/3"
       } w-[92%]`}
     >
       <div className="flex items-center justify-between">
         <button onClick={() => scrollTo("Home")} className="flex items-center gap-2 font-bold text-lg">
           <Sparkles className="w-5 h-5 text-primary" />
-          <span className="gradient-text">PitchAI</span>
+          <span className="gradient-text font-extrabold tracking-tight">PitchAI</span>
         </button>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-0.5">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary"
+              className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-secondary/80 font-medium"
             >
               {l}
             </button>
           ))}
-          <Button
-            size="sm"
-            className="ml-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
-            onClick={() => scrollTo("Home")}
-          >
-            Get Started
-          </Button>
+          <div className="flex items-center gap-2 ml-3">
+            <Button
+              size="sm"
+              variant="ghost"
+              className="rounded-full text-muted-foreground hover:text-foreground font-medium"
+              onClick={() => scrollTo("Home")}
+            >
+              <LogIn className="w-4 h-4 mr-1.5" /> Log in
+            </Button>
+            <Button
+              size="sm"
+              className="bg-foreground text-background rounded-full hover:bg-foreground/90 transition-colors font-medium px-5"
+              onClick={() => scrollTo("Home")}
+            >
+              Get Started
+            </Button>
+          </div>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setOpen(!open)}>
@@ -57,23 +67,33 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden mt-3 flex flex-col gap-1 pb-2">
+        <div className="md:hidden mt-3 flex flex-col gap-1 pb-3 border-t border-border/50 pt-3">
           {links.map((l) => (
             <button
               key={l}
               onClick={() => scrollTo(l)}
-              className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary"
+              className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors text-left rounded-lg hover:bg-secondary/80 font-medium"
             >
               {l}
             </button>
           ))}
-          <Button
-            size="sm"
-            className="mt-1 bg-primary text-primary-foreground rounded-full hover:bg-primary/90"
-            onClick={() => scrollTo("Home")}
-          >
-            Get Started
-          </Button>
+          <div className="flex flex-col gap-2 mt-2 px-1">
+            <Button
+              size="sm"
+              variant="outline"
+              className="rounded-full font-medium"
+              onClick={() => scrollTo("Home")}
+            >
+              <LogIn className="w-4 h-4 mr-1.5" /> Log in
+            </Button>
+            <Button
+              size="sm"
+              className="bg-foreground text-background rounded-full hover:bg-foreground/90 font-medium"
+              onClick={() => scrollTo("Home")}
+            >
+              Get Started
+            </Button>
+          </div>
         </div>
       )}
     </nav>

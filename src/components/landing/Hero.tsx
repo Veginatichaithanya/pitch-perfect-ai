@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, LogIn } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
 
 export default function Hero() {
@@ -23,25 +23,25 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-3xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 mb-8 text-sm text-muted-foreground border border-border animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-primary" />
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           AI-Powered Pitch Refinement
         </div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight mb-6 text-foreground tracking-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 text-foreground tracking-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
           Turn Your Ideas into{" "}
           <span className="gradient-text">Winning Pitches</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in" style={{ animationDelay: "0.2s" }}>
           AI-powered platform that evaluates and improves student pitch scripts with structured scoring and real-time feedback.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" className="bg-primary text-primary-foreground rounded-full px-8 shadow-md hover:shadow-lg transition-shadow">
-            Try Now <ArrowRight className="w-4 h-4 ml-1" />
+          <Button size="lg" className="bg-foreground text-background rounded-full px-8 shadow-lg hover:shadow-xl hover:bg-foreground/90 transition-all font-semibold text-base">
+            Get Started Free <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
-          <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-secondary">
-            <Play className="w-4 h-4 mr-1" /> View Demo
+          <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-secondary font-medium text-base">
+            <LogIn className="w-4 h-4 mr-1.5" /> Log in
           </Button>
         </div>
       </div>
