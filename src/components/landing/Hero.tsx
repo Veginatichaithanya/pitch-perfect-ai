@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, LogIn } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const scrollY = useParallax();
+  const navigate = useNavigate();
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16 px-4">
-      {/* Parallax decorative orbs */}
       <div
         className="absolute top-1/4 left-[15%] w-72 h-72 rounded-full bg-blue/8 blur-[100px] animate-pulse-glow"
         style={{ transform: `translateY(${scrollY * 0.15}px)` }}
@@ -37,10 +38,10 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" className="bg-foreground text-background rounded-full px-8 shadow-lg hover:shadow-xl hover:bg-foreground/90 transition-all font-semibold text-base">
+          <Button size="lg" className="bg-foreground text-background rounded-full px-8 shadow-lg hover:shadow-xl hover:bg-foreground/90 transition-all font-semibold text-base" onClick={() => navigate("/login")}>
             Get Started Free <ArrowRight className="w-4 h-4 ml-1" />
           </Button>
-          <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-secondary font-medium text-base">
+          <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-secondary font-medium text-base" onClick={() => navigate("/login")}>
             <LogIn className="w-4 h-4 mr-1.5" /> Log in
           </Button>
         </div>
