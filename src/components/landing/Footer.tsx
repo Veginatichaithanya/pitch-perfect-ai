@@ -15,13 +15,12 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="border-t border-border/50 py-12 px-4">
+    <footer id="contact" className="border-t border-border py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="grid sm:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
           <div>
             <div className="flex items-center gap-2 font-bold text-lg mb-3">
-              <Sparkles className="w-5 h-5 text-accent" />
+              <Sparkles className="w-5 h-5 text-primary" />
               <span className="gradient-text">PitchAI</span>
             </div>
             <p className="text-muted-foreground text-sm">
@@ -29,7 +28,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Links */}
           <div>
             <h4 className="font-semibold mb-3 text-sm">Quick Links</h4>
             <div className="flex flex-col gap-1.5">
@@ -45,7 +43,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social */}
           <div>
             <h4 className="font-semibold mb-3 text-sm">Connect</h4>
             <div className="flex gap-3">
@@ -53,7 +50,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href={href}
-                  className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:gradient-bg transition-all duration-300 group"
+                  className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
                 >
                   <Icon className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
                 </a>
@@ -62,7 +59,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-border/50 pt-6 text-center">
+        <div className="border-t border-border pt-6 text-center">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} PitchAI. All rights reserved.
           </p>

@@ -47,9 +47,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: "hsl(var(--gold))",
-        glow: "hsl(var(--glow))",
-        indigo: "hsl(var(--indigo))",
+        blue: "hsl(var(--blue))",
+        green: "hsl(var(--green))",
+        yellow: "hsl(var(--yellow))",
+        red: "hsl(var(--red))",
         cyan: "hsl(var(--cyan))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -85,8 +86,8 @@ export default {
           "50%": { transform: "translateY(-10px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.8" },
+          "0%, 100%": { opacity: "0.3" },
+          "50%": { opacity: "0.6" },
         },
       },
       animation: {
